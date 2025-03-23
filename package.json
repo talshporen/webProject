@@ -1,0 +1,32 @@
+{
+  "name": "webproject",
+  "version": "1.0.0",
+  "description": "mamaShporen project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "tsc && node ./dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/talshporen/webProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/talshporen/webProject/issues"
+  },
+  "homepage": "https://github.com/talshporen/webProject#readme",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.12.2",
+    "node": "^20.19.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.9",
+    "supertest": "^7.1.0"
+  }
+}
