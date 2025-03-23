@@ -1,27 +1,103 @@
-###
-GET http://localhost:3000
 
-###
-GET http://localhost:3000/posts
-
-###
-GET http://localhost:3000/posts?owner=tal2
-
-###
-
-GET http://localhost:3000/posts/67c201ebf985c49637e88d44
-
-###
+// --------- POSTS -----------
+### 1. add new post 1
 POST http://localhost:3000/posts
 Content-Type: application/json
 
 {
-    "owner": "tal2",
-    "title": "My first post",
-    "content": "This is my first post"
-   
+  "title": "My First Post",
+  "content": "This is the content of my first post.",
+  "senderId": "user123"
 }
 
-###
-DELETE http://localhost:3000/posts/67c201ebf985c49637e88d44
- 
+
+### 2. add new post 2 
+POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+  "title": "My Second Post",
+  "content": "This is the content of my second post.",
+  "senderId": "user123"
+}
+
+
+### 3. add new post 3
+POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+  "title": "New user post",
+  "content": "This is the content of new user post.",
+  "senderId": "User456"
+}
+
+
+### 4. get all posts
+GET http://localhost:3000/posts
+
+
+### 5. get post by id
+GET http://localhost:3000/posts/ <ID POST!!!>
+
+
+### 6. get post by first sender
+GET http://localhost:3000/posts/sender/user123
+
+
+### 7. get post by second sender
+GET http://localhost:3000/posts/sender/user456
+
+
+### 8. update post
+PUT http://localhost:3000/posts/<ID POST!!!>
+Content-Type: application/json
+
+{
+  "title": "Updated Title",
+  "content": "Updated content of the post."
+}
+
+
+// --------- COMMENTS -----------
+### 1. Add a new comment
+POST http://localhost:3000/comments
+Content-Type: application/json
+
+{
+  "postId": "673d1324a98644da2edaeac0", 
+  "content": "This is my first comment!", 
+  "author" : "a"
+}
+
+
+### 2. Get all comments by id of post
+GET http://localhost:3000/comments/<ID POST!!!>
+
+
+### 3. Get comments for a specific post
+GET http://localhost:3000/comments/post/<ID POST!!!>
+
+
+### 4. Update a comment
+PUT http://localhost:3000/comments/<ID COMMENT!!!>
+Content-Type: application/json
+
+{
+  "content": "Updated comment content!"
+}
+
+
+### 5. Delete a comment
+DELETE http://localhost:3000/comments/<ID COMMENT!!!>
+
+### 6. register user
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "name": "tal",  
+  "email": "aa@",
+  "password": "123456"
+}
+
