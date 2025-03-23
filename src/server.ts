@@ -11,7 +11,7 @@ import commentsRoutes from "./routes/comments";
 import swaggerUi from "swagger-ui-express";
 import swaggerJsDoc from "swagger-jsdoc";
 import userRoutes from "./routes/user_route";
-import chatgptRoutes from "./routes/chatgpt_route"; 
+import chatgptRoutes from "./routes/chatgpt_route";
 import './config/passport'; 
 import cookieParser from "cookie-parser";
 import path from 'path';

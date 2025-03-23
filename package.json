@@ -7,7 +7,14 @@
     "dev": "copy .env_dev .env && nodemon ./src/app.ts",
     "start": "copy .env_dev .env && tsc && node ./dist/app.js",
     "lint": "eslint . --ext .ts",
-    "test": "copy .env_test .env && tsc && jest --detectOpenHandles --forceExit --runInBand"
+    "test": "copy .env_test .env && tsc && jest --detectOpenHandles --forceExit --runInBand",
+    "testAuth": "copy .env_test .env && tsc && jest --detectOpenHandles --forceExit auth.test.ts",
+    "testPost": "copy .env_test .env && tsc && jest --detectOpenHandles --forceExit post.test.ts",
+    "testComment": "copy .env_test .env && tsc && jest --detectOpenHandles --forceExit comment.test.ts",
+    "testUser": "copy .env_test .env && tsc && jest --detectOpenHandles --forceExit user.test.ts",
+    "testPassport": "copy .env_test .env && tsc && jest --detectOpenHandles --forceExit passport.test.ts",
+    "testPaging": "copy .env_test .env && tsc && jest --detectOpenHandles --forceExit paging.test.ts",
+    "testChat": "copy .env_test .env && tsc && jest --detectOpenHandles --forceExit chatGPT.test.ts"
   },
   "repository": {
     "type": "git",
@@ -20,17 +27,45 @@
   },
   "homepage": "https://github.com/talshporen/webProject#readme",
   "dependencies": {
+    "axios": "^1.8.4",
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mime-types": "^2.1.35",
+    "mongodb": "^6.15.0",
     "mongoose": "^8.12.2",
-    "node": "^20.19.0"
+    "multer": "^1.4.5-lts.2",
+    "node": "^20.19.0",
+    "node-cache": "^5.1.2",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "typescript": "^5.8.2",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/cookie-parser": "^1.4.8",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/jest": "^29.5.14",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/multer": "^1.4.12",
+    "@types/node-fetch": "^2.6.12",
+    "@types/passport": "^1.0.17",
+    "@types/passport-google-oauth20": "^2.0.16",
     "@types/supertest": "^6.0.2",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
     "jest": "^29.7.0",
     "nodemon": "^3.1.9",
     "supertest": "^7.1.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "ts-jest": "^29.2.6",
     "ts-node": "^10.9.2"
   }
 }

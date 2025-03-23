@@ -1,17 +1,48 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import mongoose, { Schema, Document } from "mongoose";
 
-const PostSchema = new Schema({
-    owner:{
-        type: String,
-        required: true,
+export interface IPost extends Document {
+  title: string;
+  content: string;
+  author: String;
+  createdAt?: Date;
+  image?: string;
+  comments?: mongoose.Schema.Types.ObjectId[];
+  likesCount?: number; 
+}
+
+const postSchema = new mongoose.Schema<IPost>({
+  title: {
+    type: String,
+    required: true,
+  },
+  content: {
+    type: String,
+    required: true,
+  },
+  author: {
+    type: String,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  image: {
+    type: String,
+    default: "",
+  },
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment",
     },
-    title:{
-        type: String,
-        required: true,
-    },
-    content:String
+  ],
+  likesCount: {
+    type: Number,
+    default: 0, 
+  },
 });
 
-const PostModel = mongoose.model('Post', PostSchema);
-module.exports = PostModel;
+const postModel = mongoose.model<IPost>("Post", postSchema);
+
+export default postModel;

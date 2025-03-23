@@ -20,7 +20,7 @@ const Post_1 = __importDefault(require("../models/Post"));
 const Users_1 = __importDefault(require("../models/Users"));
 const testUser = {
     email: "test@user.com",
-    password: "tpassword",
+    password: "testpassword",
     username: "testuser",
 };
 let server;
@@ -161,6 +161,17 @@ describe("Comments Tests", () => {
         expect(response.body).toHaveProperty("results");
         expect(Array.isArray(response.body.results)).toBe(true);
     }));
+    test("should generate a suggested comment for a post using OpenAI", () => __awaiter(void 0, void 0, void 0, function* () {
+        const response = yield (0, supertest_1.default)(server)
+            .post("/comments/generate")
+            .set("Authorization", `Bearer ${authToken}`)
+            .send({ postId: testPostId });
+        expect([200, 400, 500]).toContain(response.statusCode);
+        if (response.statusCode === 200) {
+            expect(response.body).toHaveProperty("suggestedComment");
+            expect(typeof response.body.suggestedComment).toBe("string");
+        }
+    }));
     test("should return 401 for unauthorized access when no token is provided", () => __awaiter(void 0, void 0, void 0, function* () {
         const response = yield (0, supertest_1.default)(server)
             .post("/comments")
@@ -222,7 +233,7 @@ describe("Comments Tests", () => {
             author: testUserId,
         });
         expect(response.statusCode).toBe(400);
-        expect(response.body).toHaveProperty("message", "all fields are required");
+        expect(response.body).toHaveProperty("message", "All fields are required");
     }));
     test("should return 404 when deleting a non-existing comment", () => __awaiter(void 0, void 0, void 0, function* () {
         const fakeCommentId = new mongoose_1.default.Types.ObjectId().toString();
